@@ -10,7 +10,6 @@ License:	LGPL
 Group:		Graphics
 Source: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.bz2
 Url:		http://libopenraw.freedesktop.org
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	jpeg-devel boost-devel glib2-devel libgdk_pixbuf2.0-devel
 BuildRequires:	doxygen
 BuildRequires:	autoconf2.5
