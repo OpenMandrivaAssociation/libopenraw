@@ -1,19 +1,20 @@
 %define major	1
 %define api_version 1.0
 %define libname	%mklibname openraw %{major}
+%define develname %mklibname -d openraw
 
 Summary:	Camera RAW files decoding library
 Name:		libopenraw
-Version:	0.0.2
-Release:	%mkrel 2
-License:	LGPL
+Version:	0.0.4
+Release:	%mkrel 1
+License:	LGPLv2+
 Group:		Graphics
-Source: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.bz2
+Source: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.gz
 Url:		http://libopenraw.freedesktop.org
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	jpeg-devel boost-devel glib2-devel libgdk_pixbuf2.0-devel
 BuildRequires:	doxygen
-BuildRequires:	autoconf2.5
+BuildRequires:	autoconf
 
 %description
 libopenraw is an ongoing project to provide a free software implementation
@@ -38,13 +39,14 @@ easy to use API to build free software digital image processing application.
 It also has the goal to address missing feature from dcraw like meta-data 
 decoding and easy thumbnail extraction.
 
-%package -n %{libname}-devel
+%package -n %{develname}
 Summary:	Headers and links to compile against the "%{libname}" library
 Requires: 	%{libname} >= %{version}
 Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:	%mklibname -d openraw 1
 Group:		Graphics
 
-%description -n %{libname}-devel
+%description -n %{develname}
 This package contains all files which one needs to compile programs using
 the "%{libname}" library.
 
@@ -73,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 %doc AUTHORS NEWS COPYING README ChangeLog TODO
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_includedir}/libopenraw-%{api_version}
 %{_libdir}/*.a
@@ -81,5 +83,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %doc doc/doxygen/html/
-
-
