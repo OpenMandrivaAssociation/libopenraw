@@ -6,7 +6,7 @@
 Summary:	Camera RAW files decoding library
 Name:		libopenraw
 Version:	0.0.5
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPLv2+
 Group:		Graphics
 Source: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.gz
@@ -29,7 +29,7 @@ decoding and easy thumbnail extraction.
 %package -n %{libname}
 Summary:	Camera RAW files decoding library
 Provides:	%{name} = %{version}-%{release}
-Group:		Graphics
+Group:		System/Libraries
 
 %description -n %{libname}
 libopenraw is an ongoing project to provide a free software implementation 
@@ -45,7 +45,7 @@ Summary:	Headers and links to compile against the "%{libname}" library
 Requires: 	%{libname} >= %{version}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%mklibname -d openraw 1
-Group:		Graphics
+Group:		Development/C
 
 %description -n %{develname}
 This package contains all files which one needs to compile programs using
@@ -73,7 +73,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %{libname} 
 %defattr(-,root,root)
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{major}
+%{_libdir}/*.so.%{major}.*
 %doc AUTHORS NEWS COPYING README ChangeLog TODO
 
 %files -n %{develname}
