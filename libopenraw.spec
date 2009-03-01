@@ -5,9 +5,9 @@
 
 Summary:	Camera RAW files decoding library
 Name:		libopenraw
-Version:	0.0.5
-Release:	%mkrel 3
-License:	LGPLv2+
+Version:	0.0.6
+Release:	%mkrel 1
+License:	LGPLv3+
 Group:		Graphics
 Source: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.gz
 Url:		http://libopenraw.freedesktop.org
@@ -61,7 +61,7 @@ sed -i -e 's|@top_srcdir@/dcraw ||' doc/Doxyfile.in
 make dox
 
 %install
-rm -rf ${RPM_BUILD_ROOT}
+rm -rf %{buildroot}
 %makeinstall
 
 %if %mdkversion < 200900
@@ -73,7 +73,7 @@ rm -rf ${RPM_BUILD_ROOT}
 %endif
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -n %{libname} 
 %defattr(-,root,root)
@@ -87,5 +87,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_libdir}/*.so
+%{_libdir}/gtk-2.0/2.10.0/loaders/*.a
+%{_libdir}/gtk-2.0/2.10.0/loaders/*.la
+%{_libdir}/gtk-2.0/2.10.0/loaders/*.so
 %{_libdir}/pkgconfig/*
 %doc doc/doxygen/html/
