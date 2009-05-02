@@ -12,7 +12,7 @@ Group:		Graphics
 Source: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.gz
 Url:		http://libopenraw.freedesktop.org
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	jpeg-devel boost-devel glib2-devel libgdk_pixbuf2.0-devel
+BuildRequires:	jpeg-devel boost-devel libgdk_pixbuf2.0-devel gtk+2-devel
 BuildRequires:	libxml2-devel curl-devel
 BuildRequires:	doxygen
 BuildRequires:	autoconf
@@ -56,7 +56,7 @@ the "%{libname}" library.
 sed -i -e 's|@top_srcdir@/dcraw ||' doc/Doxyfile.in
 
 %build
-%configure2_5x 
+%configure2_5x --disable-static
 %make
 make dox
 
@@ -75,6 +75,9 @@ rm -rf %{buildroot}
 %clean
 rm -rf %{buildroot}
 
+%files
+%{_libdir}/gtk-2.0/2.10.0/loaders/*.so
+
 %files -n %{libname} 
 %defattr(-,root,root)
 %{_libdir}/*.so.%{major}
@@ -84,11 +87,8 @@ rm -rf %{buildroot}
 %files -n %{develname}
 %defattr(-,root,root)
 %{_includedir}/libopenraw-%{api_version}
-%{_libdir}/*.a
-%{_libdir}/*.la
 %{_libdir}/*.so
-%{_libdir}/gtk-2.0/2.10.0/loaders/*.a
+%{_libdir}/*.la
 %{_libdir}/gtk-2.0/2.10.0/loaders/*.la
-%{_libdir}/gtk-2.0/2.10.0/loaders/*.so
 %{_libdir}/pkgconfig/*
 %doc doc/doxygen/html/
