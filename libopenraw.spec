@@ -3,21 +3,25 @@
 %define libname	%mklibname openraw %{major}
 %define develname %mklibname -d openraw
 
+%define build_dox 0
+
 Summary:	Camera RAW files decoding library
 Name:		libopenraw
-Version:	0.0.8
-Release:	%mkrel 6
+Version:	0.0.9
+Release:	1
 License:	LGPLv3+
 Group:		Graphics
-Source: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.gz
-Patch0:		libopenraw-0.0.8-gdk222.patch
 Url:		http://libopenraw.freedesktop.org
-BuildRoot:	%{_tmppath}/%{name}-buildroot
+Source0: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.bz2
+Patch0:		libopenraw-0.0.8-gdk222.patch
+
 BuildRequires:	jpeg-devel
 BuildRequires:	boost-devel
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	libxml2-devel
+%if %{build_dox}
 BuildRequires:	doxygen
+%endif
 Requires(post):	gdk-pixbuf2.0
 Requires(postun): gdk-pixbuf2.0
 
@@ -57,51 +61,36 @@ the "%{libname}" library.
 
 %prep
 %setup -q 
-%patch0 -p0
+%if %{build_dox}
 sed -i -e 's|@top_srcdir@/dcraw ||' doc/Doxyfile.in
+%endif
 
 %build
-autoreconf -fi
-%configure2_5x --disable-static
+%configure2_5x \
+	--disable-static
+
 %make
+
+%if %{build_dox}
 make dox
+%endif
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%post
-%_bindir/gdk-pixbuf-query-loaders --update-cache
-
-%postun
-%_bindir/gdk-pixbuf-query-loaders --update-cache
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf %{buildroot}
+find %{buildroot} -name *.la | xargs rm
 
 %files
-%defattr(-,root,root)
+%doc AUTHORS NEWS COPYING README ChangeLog TODO
 %{_libdir}/gdk-pixbuf-2.0/*/loaders/*.so
 
 %files -n %{libname} 
-%defattr(-,root,root)
-%{_libdir}/*.so.%{major}
-%{_libdir}/*.so.%{major}.*
-%doc AUTHORS NEWS COPYING README ChangeLog TODO
+%{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{_includedir}/libopenraw-%{api_version}
 %{_libdir}/*.so
-%{_libdir}/*.la
-%{_libdir}/gdk-pixbuf-2.0/*/loaders/*.la
 %{_libdir}/pkgconfig/*
+%if %{build_dox}
 %doc doc/doxygen/html/
+%endif
