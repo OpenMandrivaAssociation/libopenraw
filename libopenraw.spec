@@ -13,7 +13,6 @@ License:	LGPLv3+
 Group:		Graphics
 Url:		http://libopenraw.freedesktop.org
 Source0: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.bz2
-Patch0:		libopenraw-0.0.8-gdk222.patch
 
 BuildRequires:	jpeg-devel
 BuildRequires:	boost-devel
