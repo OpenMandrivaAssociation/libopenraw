@@ -62,6 +62,7 @@ decoding and easy thumbnail extraction.
 %package -n	%{devname}
 Summary:	Headers and links to compile against the "%{libname}" library
 Requires:	%{libname} >= %{version}-%{release}
+Requires:	%{libgnm} >= %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%mklibname -d openraw 1
 Group:		Development/C
