@@ -16,6 +16,7 @@ BuildRequires:	jpeg-devel
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	doxygen
 Requires(post):	gdk-pixbuf2.0
 Requires(postun): gdk-pixbuf2.0
@@ -100,6 +101,7 @@ make dox
 
 %changelog
 * Tue Feb 12 2013 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.0.9-2
+- add buildrequires on pkgconfig(libcurl)
 - split out libopenrawgnome into separate library package
 - cosmetics
 - use pkgconfig() deps for buildrequires
