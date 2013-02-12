@@ -6,15 +6,15 @@
 Summary:	Camera RAW files decoding library
 Name:		libopenraw
 Version:	0.0.9
-Release:	1
+Release:	2
 License:	LGPLv3+
 Group:		Graphics
 Source0: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.bz2
 Url:		http://libopenraw.freedesktop.org
 BuildRequires:	jpeg-devel
 BuildRequires:	boost-devel
-BuildRequires:	libgdk_pixbuf2.0-devel
-BuildRequires:	libxml2-devel
+BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	doxygen
 Requires(post):	gdk-pixbuf2.0
 Requires(postun): gdk-pixbuf2.0
@@ -79,8 +79,10 @@ make dox
 %{_libdir}/pkgconfig/*
 %doc doc/doxygen/html/
 
-
 %changelog
+* Tue Feb 12 2013 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.0.9-2
+- use pkgconfig() deps for buildrequires
+
 * Fri Apr 29 2011 Oden Eriksson <oeriksson@mandriva.com> 0.0.8-5mdv2011.0
 + Revision: 660273
 - mass rebuild
