@@ -1,13 +1,13 @@
-%define	major	1
-%define api	1.0
-%define	libname	%mklibname openraw %{major}
-%define	devname	%mklibname -d openraw
-%define	libgnm	%mklibname openrawgnome %{major}
+%define major 1
+%define api 1.0
+%define libname %mklibname openraw %{major}
+%define devname %mklibname -d openraw
+%define libgnm %mklibname openrawgnome %{major}
 
 Summary:	Camera RAW files decoding library
 Name:		libopenraw
-Version:	0.0.9
-Release:	14
+Version:	0.1.0
+Release:	1
 License:	LGPLv3+
 Group:		Graphics
 Url:		http://libopenraw.freedesktop.org
@@ -77,7 +77,7 @@ the "%{libname}" library.
 sed -i -e 's|@top_srcdir@/dcraw ||' doc/Doxyfile.in
 
 %build
-%configure2_5x --disable-static
+%configure
 %make
 make dox
 
@@ -94,10 +94,9 @@ make dox
 %{_libdir}/libopenrawgnome.so.%{major}*
 
 %files -n %{devname}
-%doc AUTHORS NEWS README ChangeLog TODO
+%doc AUTHORS NEWS README TODO
 %doc doc/doxygen/html/
 %{_includedir}/libopenraw-%{api}
 %{_libdir}/libopenraw.so
 %{_libdir}/libopenrawgnome.so
 %{_libdir}/pkgconfig/*.pc
-
