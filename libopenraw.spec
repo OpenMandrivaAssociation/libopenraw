@@ -1,5 +1,5 @@
-%define major 1
-%define api 1.0
+%define major 7
+%define api 0.1
 %define libname %mklibname openraw %{major}
 %define devname %mklibname -d openraw
 %define libgnm %mklibname openrawgnome %{major}
