@@ -4,9 +4,11 @@
 %define devname %mklibname -d openraw
 %define libgnm %mklibname openrawgnome %{major}
 
+%define _disable_rebuild_configure 1
+
 Summary:	Camera RAW files decoding library
 Name:		libopenraw
-Version:	0.1.2
+Version:	0.1.3
 Release:	1
 License:	LGPLv3+
 Group:		Graphics

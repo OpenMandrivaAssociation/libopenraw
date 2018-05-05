@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   libopenraw-0.1.2.tar.bz2: 3a1a2759dcfb8a443ab4e583aa1b597ea8bf7a65
+sources:
+  libopenraw-0.1.3.tar.bz2: 5cad7a73f79a52214c5e565bc18cab398aa0cb29
