@@ -9,7 +9,7 @@
 Summary:	Camera RAW files decoding library
 Name:		libopenraw
 Version:	0.1.3
-Release:	3
+Release:	4
 License:	LGPLv3+
 Group:		Graphics
 Url:		http://libopenraw.freedesktop.org
