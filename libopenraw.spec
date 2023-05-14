@@ -15,6 +15,7 @@ Group:		Graphics
 Url:		http://libopenraw.freedesktop.org
 Source0: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.bz2
 
+BuildRequires:  cargo
 BuildRequires:	doxygen
 BuildRequires:	jpeg-devel
 BuildRequires:	boost-devel
