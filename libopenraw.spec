@@ -1,5 +1,5 @@
 %define major 9
-%define api 0.1
+%define api 0.3
 %define libname %mklibname openraw %{major}
 %define devname %mklibname -d openraw
 %define libgnm %mklibname openrawgnome %{major}
@@ -98,7 +98,7 @@ sed -i -e 's|@top_srcdir@/dcraw ||' doc/Doxyfile.in
 %files -n %{devname}
 %doc AUTHORS NEWS README TODO
 #doc doc/doxygen/html/
-#{_includedir}/libopenraw-%{api}
+%{_includedir}/libopenraw-%{api}
 %{_libdir}/libopenraw.so
 %{_libdir}/libopenrawgnome.so
 %{_libdir}/pkgconfig/*.pc
