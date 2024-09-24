@@ -1,4 +1,4 @@
-%define major 7
+%define major 9
 %define api 0.1
 %define libname %mklibname openraw %{major}
 %define devname %mklibname -d openraw
