@@ -81,11 +81,10 @@ sed -i -e 's|@top_srcdir@/dcraw ||' doc/Doxyfile.in
 
 %build
 %configure
-%make
-make dox
+%make_build
 
 %install
-%makeinstall_std
+%makei_nstall
 
 %files
 %{_libdir}/gdk-pixbuf-2.0/*/loaders/*.so
