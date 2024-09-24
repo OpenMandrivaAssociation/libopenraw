@@ -97,8 +97,8 @@ sed -i -e 's|@top_srcdir@/dcraw ||' doc/Doxyfile.in
 
 %files -n %{devname}
 %doc AUTHORS NEWS README TODO
-%doc doc/doxygen/html/
-%{_includedir}/libopenraw-%{api}
+#doc doc/doxygen/html/
+#{_includedir}/libopenraw-%{api}
 %{_libdir}/libopenraw.so
 %{_libdir}/libopenrawgnome.so
 %{_libdir}/pkgconfig/*.pc
