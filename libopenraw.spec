@@ -12,7 +12,7 @@ Version:	0.3.7
 Release:	1
 License:	LGPLv3+
 Group:		Graphics
-Url:		http://libopenraw.freedesktop.org
+Url:		https://libopenraw.freedesktop.org
 Source0: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.bz2
 
 BuildRequires:  cargo
