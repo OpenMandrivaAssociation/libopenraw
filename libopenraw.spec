@@ -15,6 +15,11 @@ Group:		Graphics
 Url:		https://libopenraw.freedesktop.org
 Source0: 	http://libopenraw.freedesktop.org/download/%name-%version.tar.bz2
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  cargo
 BuildRequires:	doxygen
 BuildRequires:	jpeg-devel
